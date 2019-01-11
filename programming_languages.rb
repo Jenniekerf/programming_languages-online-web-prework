@@ -8,7 +8,6 @@ def reformat_languages(languages)
           new_hash[lang_name] = describe
           #set style key empty so we can add the style later
           new_hash[lang_name][:style] = []
-        end
         #add style to new_hash
         #if the same lang_name, it will go straight here and add style
         new_hash[lang_name][:style] << style
