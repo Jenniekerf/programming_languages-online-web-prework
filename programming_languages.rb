@@ -1,20 +1,38 @@
-
 def reformat_languages(languages)
-  language_attributes = {}
-  languages.each do |oo_or_functional, language_hash|
-    language_hash.each do |language, attribute_hash|
-      attribute_hash.each do |attribute, str|
-        if language_attributes[language].nil?
-          language_attributes[language] = {}
- end 
- language_attributes[language][:style] ||= []
- language_attributes[language][:style] << oo_or_functional                                
-        if language_attributes[language][attribute].nil?
-          language_attributes[language][attribute] = str  
+  new_hash = {} #build a new hash
+  languages.each do |style, data| #style: oo, functional. data: hash
+    data.each do |lang_name, describe| #lang_name: ruby, etc. describe: hash
+       #set lang_name to be the key on top level
+       #the value will be the hash(type=>...)
+       if new_hash[lang_name] == nil
+          new_hash[lang_name] = describe
+          #set style key empty so we can add the style later
+          new_hash[lang_name][:style] = []
         end
-      end
+        #add style to new_hash
+        #if the same lang_name, it will go straight here and add style
+        new_hash[lang_name][:style] << style
     end
   end
-  language_attributes
+  new_hash
 end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
